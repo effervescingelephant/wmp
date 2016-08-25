@@ -20,7 +20,6 @@
     </properties>
 
     <modules>
-        <module>shared-resources</module>
         <module>auth-service</module>
         <module>dashboard-service</module>
         <module>editor-service</module>
