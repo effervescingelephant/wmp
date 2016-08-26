@@ -2,9 +2,17 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         ts: {
-            shared: {
-                src: ["shared/**/*.ts"],
-                out: "resources/js/compiled/shared.js"
+            utils: {
+                src: ["app/utils/**/*.ts"],
+                out: "resources/js/compiled/utils.js"
+            },
+            editorCore: {
+                src: ["app/editor/core/**/*.ts"],
+                out: "resources/js/compiled/editorCore.js"
+            },
+            twoDModelCore: {
+                src: ["app/twoDModel/core/**/*.ts"],
+                out: "resources/js/compiled/twoDModelCore.js"
             },
             editor: {
                 src: ["app/editor/diagram/**/*.ts", "app/editor/*.ts"],
@@ -22,5 +30,5 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", ["ts:shared", "ts:editor", "ts:interpreter", "ts:twoDModelRobots"]);
+    grunt.registerTask("default", ["ts:utils", "ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:interpreter", "ts:twoDModelRobots"]);
 }
