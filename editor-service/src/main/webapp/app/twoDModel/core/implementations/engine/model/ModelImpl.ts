@@ -21,7 +21,7 @@
 /// <reference path="../../../interfaces/engine/model/Settings.ts" />
 /// <reference path="../../../interfaces/engine/model/RobotModel.ts" />
 /// <reference path="../../../types/TwoDPosition.ts" />
-/// <reference path="../../../utils.d.ts" />
+/// <reference path="../../../utils/MathUtils.ts" />
 
 class ModelImpl implements Model {
     private worldModel : WorldModel;

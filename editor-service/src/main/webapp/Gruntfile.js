@@ -2,10 +2,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         ts: {
-            utils: {
-                src: ["app/utils/**/*.ts"],
-                out: "resources/js/compiled/utils.js"
-            },
             editorCore: {
                 src: ["app/editor/core/**/*.ts"],
                 out: "resources/js/compiled/editorCore.js"
@@ -30,5 +26,5 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", ["ts:utils", "ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:interpreter", "ts:twoDModelRobots"]);
+    grunt.registerTask("default", ["ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:interpreter", "ts:twoDModelRobots"]);
 }

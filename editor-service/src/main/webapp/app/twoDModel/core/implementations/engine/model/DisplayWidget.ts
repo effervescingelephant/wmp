@@ -15,7 +15,7 @@
  */
 
 /// <reference path="LedWidget.ts" />
-/// <reference path="../../../utils.d.ts" />
+/// <reference path="../../../utils/MathUtils.ts" />
 /// <reference path="../../../constants/GeneralConstants.d.ts" />
 /// <reference path="../../../vendor.d.ts" />
 

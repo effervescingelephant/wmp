@@ -28,7 +28,7 @@
 /// <reference path="../../../interfaces/robotModel/DeviceInfo.ts" />
 /// <reference path="../../../types/TwoDPosition.ts" />
 /// <reference path="../../../constants/GeneralConstants.d.ts" />
-/// <reference path="../../../utils.d.ts" />
+/// <reference path="../../../utils/MathUtils.ts" />
 /// <reference path="../../../vendor.d.ts" />
 
 class SensorItem {

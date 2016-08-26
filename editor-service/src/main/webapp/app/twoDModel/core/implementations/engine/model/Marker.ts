@@ -15,7 +15,7 @@
  */
 
 /// <reference path="../../../types/TwoDPosition.ts" />
-/// <reference path="../../../utils.d.ts" />
+/// <reference path="../../../utils/MathUtils.ts" />
 /// <reference path="../../../vendor.d.ts" />
 
 class Marker {

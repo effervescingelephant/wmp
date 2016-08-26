@@ -16,7 +16,7 @@
 
 /// <reference path="../../../../interfaces/engine/model/WorldModel.ts" />
 /// <reference path="../../../../types/TwoDPosition.ts" />
-/// <reference path="../../../../utils.d.ts" />
+/// <reference path="../../../../utils/ColorUtils.ts" />
 /// <reference path="../../../../vendor.d.ts" />
 
 class RegionItem {
