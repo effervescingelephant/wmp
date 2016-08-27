@@ -1,3 +1,5 @@
+/// <reference path="plugins.d.ts" />
+
 declare class UIDGenerator {
     static generate(): string;
 }
