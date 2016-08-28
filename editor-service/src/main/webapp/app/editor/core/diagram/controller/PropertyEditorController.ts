@@ -21,7 +21,7 @@
 /// <reference path="../model/Map.ts" />
 /// <reference path="../model/Property.ts" />
 /// <reference path="../view/HtmlView.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 /// <reference path="../../../interfaces/plugins.d.ts" />
 
 class PropertyEditorController {

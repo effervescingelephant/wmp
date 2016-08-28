@@ -16,7 +16,7 @@
 
 /// <reference path="../../../interfaces/engine/items/PencilItem.ts" />
 /// <reference path="../../../interfaces/engine/model/WorldModel.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class PencilItemImpl implements PencilItem {
     private path: RaphaelPath;

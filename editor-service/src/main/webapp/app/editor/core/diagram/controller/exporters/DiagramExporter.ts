@@ -19,7 +19,7 @@
 /// <reference path="../../model/DiagramNode.ts" />
 /// <reference path="../../model/Map.ts" />
 /// <reference path="../../model/Property.ts" />
-/// <reference path="../../../vendor.d.ts" />
+/// <reference path="../../../../interfaces/vendor.d.ts" />
 
 class DiagramExporter {
 

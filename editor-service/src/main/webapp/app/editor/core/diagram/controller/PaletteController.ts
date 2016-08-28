@@ -20,7 +20,7 @@
 /// <reference path="../model/PaletteTypes.ts" />
 /// <reference path="../view/SubprogramPaletteView.ts" />
 /// <reference path="../view/BlocksPaletteView.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class PaletteController {
 

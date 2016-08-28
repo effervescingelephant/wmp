@@ -15,7 +15,7 @@
  */
 
 /// <reference path="ColorFieldItem.ts" />
-/// <reference path="../../../../vendor.d.ts"/>
+/// <reference path="../../../../../interfaces/vendor.d.ts"/>
 
 interface LineItem extends ColorFieldItem {
     getPath(): RaphaelPath;

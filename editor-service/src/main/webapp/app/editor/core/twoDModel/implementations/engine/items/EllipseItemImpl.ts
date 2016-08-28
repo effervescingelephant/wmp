@@ -16,7 +16,7 @@
 
 /// <reference path="../../../interfaces/engine/items/EllipseItem.ts" />
 /// <reference path="../../../interfaces/engine/model/WorldModel.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class EllipseItemImpl implements EllipseItem {
     private ellipse: RaphaelElement;

@@ -15,7 +15,7 @@
  */
 
 /// <reference path="DiagramScene.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class DiagramEditor {
 

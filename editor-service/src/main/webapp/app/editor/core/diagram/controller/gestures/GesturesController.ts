@@ -18,7 +18,7 @@
 
 /// <reference path="../../model/Gesture.ts" />
 /// <reference path="../../../constants/GeneralConstants.d.ts" />
-/// <reference path="../../../vendor.d.ts" />
+/// <reference path="../../../../interfaces/vendor.d.ts" />
 
 class GesturesController {
 

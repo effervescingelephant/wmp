@@ -17,7 +17,7 @@
 /// <reference path="../../../../interfaces/engine/model/WorldModel.ts" />
 /// <reference path="../../../../types/TwoDPosition.ts" />
 /// <reference path="../../../../../utils/ColorUtils.ts" />
-/// <reference path="../../../../../vendor.d.ts" />
+/// <reference path="../../../../../../interfaces/vendor.d.ts" />
 
 class RegionItem {
     protected shape: RaphaelElement;

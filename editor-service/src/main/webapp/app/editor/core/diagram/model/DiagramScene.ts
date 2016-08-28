@@ -18,7 +18,7 @@
 /// <reference path="DiagramNode.ts" />
 /// <reference path="Link.ts" />
 /// <reference path="../controller/DiagramElementListener.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class DiagramScene extends joint.dia.Paper {
 

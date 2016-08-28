@@ -15,7 +15,7 @@
  */
 
 /// <reference path="AbstractItem.ts" />
-/// <reference path="../../../../vendor.d.ts"/>
+/// <reference path="../../../../../interfaces/vendor.d.ts"/>
 
 interface WallItem extends AbstractItem {
     getPath(): RaphaelPath;

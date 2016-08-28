@@ -29,7 +29,7 @@
 /// <reference path="../../../types/TwoDPosition.ts" />
 /// <reference path="../../../../constants/GeneralConstants.d.ts" />
 /// <reference path="../../../../utils/MathUtils.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class SensorItem {
     protected robotItem: RobotItem;

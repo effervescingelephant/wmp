@@ -19,7 +19,7 @@
 /// <reference path="../../../interfaces/engine/items/RobotItem.ts" />
 /// <reference path="../../../interfaces/robotModel/DeviceInfo.ts" />
 /// <reference path="../../../types/TwoDPosition.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class SonarSensorItem extends SensorItem {
     private scanningRegion: RaphaelPath;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class LedWidget {
 

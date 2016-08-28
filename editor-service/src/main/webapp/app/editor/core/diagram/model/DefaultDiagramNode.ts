@@ -23,7 +23,7 @@
 /// <reference path="Map.ts" />
 /// <reference path="Property.ts" />
 /// <reference path="PropertyEditElement.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class DefaultDiagramNode implements DiagramNode {
 

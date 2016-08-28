@@ -22,7 +22,7 @@
 /// <reference path="../model/DefaultDiagramNode.ts" />
 /// <reference path="../model/commands/Command.ts"/>
 /// <reference path="../model/commands/SceneCommandFactory.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 /// <reference path="../../../interfaces/plugins.d.ts" />
 
 class SceneController {

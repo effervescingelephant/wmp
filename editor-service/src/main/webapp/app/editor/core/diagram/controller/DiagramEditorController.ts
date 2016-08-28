@@ -23,7 +23,7 @@
 /// <reference path="../model/DiagramEditor.ts" />
 /// <reference path="../model/RobotsDiagramNode.ts" />
 /// <reference path="../model/Map.ts"/>
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 /// <reference path="../../../interfaces/plugins.d.ts" />
 
 abstract class DiagramEditorController {

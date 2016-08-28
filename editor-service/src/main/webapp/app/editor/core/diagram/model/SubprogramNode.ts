@@ -18,7 +18,7 @@
 /// <reference path="Map.ts" />
 /// <reference path="Property.ts" />
 /// <reference path="PropertiesPack.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class SubprogramNode extends DefaultDiagramNode {
 

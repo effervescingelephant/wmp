@@ -25,7 +25,7 @@
 /// <reference path="../../../interfaces/engine/items/ColorFieldItem.ts" />
 /// <reference path="../../../interfaces/engine/items/WallItem.ts" />
 /// <reference path="../../../../utils/ColorUtils.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class WorldModelImpl implements WorldModel {
 

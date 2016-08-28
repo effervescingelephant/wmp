@@ -24,7 +24,7 @@
 /// <reference path="../../../interfaces/engine/model/RobotModel.ts" />
 /// <reference path="../../../interfaces/robotModel/DeviceInfo.ts" />
 /// <reference path="../../../types/TwoDPosition.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class RobotItemImpl implements RobotItem {
 

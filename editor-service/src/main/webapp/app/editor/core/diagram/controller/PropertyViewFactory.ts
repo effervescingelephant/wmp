@@ -20,7 +20,7 @@
 /// <reference path="../view/CheckboxPropertyView.ts" />
 /// <reference path="../view/DropdownPropertyView.ts" />
 /// <reference path="../view/SpinnerPropertyView.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class PropertyViewFactory {
 

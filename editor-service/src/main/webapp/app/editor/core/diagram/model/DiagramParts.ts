@@ -19,7 +19,7 @@
 /// <reference path="Link.ts" />
 /// <reference path="RobotsDiagramNode.ts" />
 /// <reference path="SubprogramDiagramNode.ts" />
-/// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/vendor.d.ts" />
 
 class DiagramParts {
 

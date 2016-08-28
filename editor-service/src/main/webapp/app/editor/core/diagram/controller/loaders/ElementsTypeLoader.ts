@@ -17,7 +17,7 @@
 /// <reference path="../../model/ElementTypes.ts" />
 /// <reference path="../parsers/TypesParser.ts" />
 /// <reference path="../../../constants/GeneralConstants.d.ts" />
-/// <reference path="../../../vendor.d.ts" />
+/// <reference path="../../../../interfaces/vendor.d.ts" />
 
 class ElementsTypeLoader {
 

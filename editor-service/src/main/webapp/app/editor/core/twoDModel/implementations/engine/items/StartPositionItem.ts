@@ -16,7 +16,7 @@
 
 /// <reference path="../../../interfaces/engine/model/WorldModel.ts" />
 /// <reference path="../../../../constants/GeneralConstants.d.ts" />
-/// <reference path="../../../../vendor.d.ts" />
+/// <reference path="../../../../../interfaces/vendor.d.ts" />
 
 class StartPositionItem {
     private width = 15;
