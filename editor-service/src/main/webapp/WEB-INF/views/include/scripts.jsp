@@ -12,7 +12,6 @@
     <script src="<c:url value='/resources/js/thrift.js' />"></script>
     <script src="<c:url value='/resources/js/transform-to-element-fix.js' />"></script>
 
-    <script src="<c:url value='/resources/js/compiled/utils.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/editorCore.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/twoDModelCore.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/editor.js' />"></script>
