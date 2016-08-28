@@ -24,6 +24,7 @@
 /// <reference path="../model/RobotsDiagramNode.ts" />
 /// <reference path="../model/Map.ts"/>
 /// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/plugins.d.ts" />
 
 abstract class DiagramEditorController {
 
@@ -38,7 +39,16 @@ abstract class DiagramEditorController {
 
     constructor($scope, $attrs) {
         this.scope = $scope;
-        this.undoRedoController = new UndoRedoController();
+        if (window.hasOwnProperty("UndoRedoController")) {
+            this.undoRedoController = new UndoRedoController();
+            $scope.undo = () => {
+                this.undoRedoController.undo();
+            };
+
+            $scope.redo = () => {
+                this.undoRedoController.redo();
+            };
+        }
         this.nodeTypesMap = {};
         this.paletteController = new PaletteController();
         DiagramElementListener.getNodeProperties = (type: string): Map<Property> => {
@@ -47,14 +57,6 @@ abstract class DiagramEditorController {
         this.diagramEditor = new DiagramEditor();
         this.sceneController = new SceneController(this, this.diagramEditor.getScene());
         this.elementsTypeLoader = new ElementsTypeLoader();
-
-        $scope.undo = () => {
-            this.undoRedoController.undo();
-        };
-
-        $scope.redo = () => {
-            this.undoRedoController.redo();
-        };
 
         $(document).bind("mousedown", function (e) {
             if (!($(e.target).parents(".custom-menu").length > 0)) {
@@ -101,7 +103,8 @@ abstract class DiagramEditorController {
         this.propertyEditorController.clearState();
         this.sceneController.clearState();
         this.diagramEditor.clear();
-        this.undoRedoController.clearStack();
+        if (this.undoRedoController !== undefined)
+            this.undoRedoController.clearStack();
     }
 
 }

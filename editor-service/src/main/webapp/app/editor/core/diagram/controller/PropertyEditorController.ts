@@ -22,6 +22,7 @@
 /// <reference path="../model/Property.ts" />
 /// <reference path="../view/HtmlView.ts" />
 /// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/plugins.d.ts" />
 
 class PropertyEditorController {
 
@@ -68,7 +69,8 @@ class PropertyEditorController {
         var property: Property = currentElement.getChangeableProperties()[key];
         var changePropertyCommand: Command = new ChangePropertyCommand(key, value, property.value,
             this.setProperty.bind(this), changeHtmlFunction);
-        this.undoRedoController.addCommand(changePropertyCommand);
+        if (this.undoRedoController !== undefined)
+            this.undoRedoController.addCommand(changePropertyCommand);
     }
 
     public clearState(): void {

@@ -23,6 +23,7 @@
 /// <reference path="../model/commands/Command.ts"/>
 /// <reference path="../model/commands/SceneCommandFactory.ts" />
 /// <reference path="../../vendor.d.ts" />
+/// <reference path="../../../interfaces/plugins.d.ts" />
 
 class SceneController {
 
@@ -138,7 +139,8 @@ class SceneController {
 
         var command: Command = new MultiCommand([this.paperCommandFactory.makeCreateNodeCommand(node),
             this.paperCommandFactory.makeChangeCurrentElementCommand(node, this.currentElement)]);
-        this.undoRedoController.addCommand(command);
+        if (this.undoRedoController !== undefined)
+            this.undoRedoController.addCommand(command);
         command.execute();
     }
 
@@ -213,14 +215,16 @@ class SceneController {
         if (element !== this.currentElement) {
             var changeCurrentElementCommand: Command = this.paperCommandFactory.makeChangeCurrentElementCommand(element,
                 this.currentElement);
-            this.undoRedoController.addCommand(changeCurrentElementCommand);
+            if (this.undoRedoController !== undefined)
+                this.undoRedoController.addCommand(changeCurrentElementCommand);
             changeCurrentElementCommand.execute();
         }
     }
 
     public makeAndExecuteCreateLinkCommand(link: Link): void {
         var createLinkCommand: Command = this.paperCommandFactory.makeCreateLinkCommand(link);
-        this.undoRedoController.addCommand(createLinkCommand);
+        if (this.undoRedoController !== undefined)
+            this.undoRedoController.addCommand(createLinkCommand);
         createLinkCommand.execute();
     }
 
@@ -306,7 +310,8 @@ class SceneController {
             if (node) {
                 var command: Command = this.paperCommandFactory.makeMoveCommand(node, this.lastCellMouseDownPosition.x,
                     this.lastCellMouseDownPosition.y, node.getX(), node.getY(), this.scene.getZoom());
-                this.undoRedoController.addCommand(command);
+                if (this.undoRedoController !== undefined)
+                    this.undoRedoController.addCommand(command);
             }
         }
     }
@@ -391,7 +396,8 @@ class SceneController {
             removeCommands.push(this.paperCommandFactory.makeRemoveLinkCommand(<Link> this.currentElement));
         }
         var multiCommand: Command = new MultiCommand(removeCommands);
-        this.undoRedoController.addCommand(multiCommand);
+        if (this.undoRedoController !== undefined)
+            this.undoRedoController.addCommand(multiCommand);
         multiCommand.execute();
     }
 
