@@ -1,4 +1,4 @@
-/// <reference path="../../interfaces/diagramCore.d.ts" />
+/// <reference path="../interfaces/command.d.ts" />
 /// <reference path="../../interfaces/vendor.d.ts" />
 
 class UndoRedoController {
