@@ -123,8 +123,7 @@ class SceneController {
 
         var command: Command = new MultiCommand([this.paperCommandFactory.makeCreateNodeCommand(node),
             this.paperCommandFactory.makeChangeCurrentElementCommand(node, this.currentElement)]);
-        if (this.undoRedoController !== undefined)
-            this.undoRedoController.addCommand(command);
+        PluginController.exec(this.undoRedoController, "addCommand", command);
         command.execute();
     }
 
@@ -199,16 +198,14 @@ class SceneController {
         if (element !== this.currentElement) {
             var changeCurrentElementCommand: Command = this.paperCommandFactory.makeChangeCurrentElementCommand(element,
                 this.currentElement);
-            if (this.undoRedoController !== undefined)
-                this.undoRedoController.addCommand(changeCurrentElementCommand);
+            PluginController.exec(this.undoRedoController, "addCommand", changeCurrentElementCommand);
             changeCurrentElementCommand.execute();
         }
     }
 
     public makeAndExecuteCreateLinkCommand(link: Link): void {
         var createLinkCommand: Command = this.paperCommandFactory.makeCreateLinkCommand(link);
-        if (this.undoRedoController !== undefined)
-            this.undoRedoController.addCommand(createLinkCommand);
+        PluginController.exec(this.undoRedoController, "addCommand", createLinkCommand);
         createLinkCommand.execute();
     }
 
@@ -294,8 +291,7 @@ class SceneController {
             if (node) {
                 var command: Command = this.paperCommandFactory.makeMoveCommand(node, this.lastCellMouseDownPosition.x,
                     this.lastCellMouseDownPosition.y, node.getX(), node.getY(), this.scene.getZoom());
-                if (this.undoRedoController !== undefined)
-                    this.undoRedoController.addCommand(command);
+                PluginController.exec(this.undoRedoController, "addCommand", command);
             }
         }
     }
@@ -380,8 +376,7 @@ class SceneController {
             removeCommands.push(this.paperCommandFactory.makeRemoveLinkCommand(<Link> this.currentElement));
         }
         var multiCommand: Command = new MultiCommand(removeCommands);
-        if (this.undoRedoController !== undefined)
-            this.undoRedoController.addCommand(multiCommand);
+        PluginController.exec(this.undoRedoController, "addCommand", multiCommand);
         multiCommand.execute();
     }
 

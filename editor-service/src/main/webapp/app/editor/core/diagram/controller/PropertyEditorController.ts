@@ -53,8 +53,7 @@ class PropertyEditorController {
         var property: Property = currentElement.getChangeableProperties()[key];
         var changePropertyCommand: Command = new ChangePropertyCommand(key, value, property.value,
             this.setProperty.bind(this), changeHtmlFunction);
-        if (this.undoRedoController !== undefined)
-            this.undoRedoController.addCommand(changePropertyCommand);
+        PluginController.exec(this.undoRedoController, "addCommand", changePropertyCommand);
     }
 
     public clearState(): void {

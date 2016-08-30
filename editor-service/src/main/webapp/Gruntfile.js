@@ -2,6 +2,10 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         ts: {
+            pluginController: {
+                src: ["app/editor/plugins/*.ts"],
+                out: "resources/js/compiled/pluginController.js"
+            },
             editorCore: {
                 src: ["app/editor/core/**/*.ts"],
                 out: "resources/js/compiled/editorCore.js"
@@ -30,5 +34,5 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", ["ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:undoRedoPlugin", "ts:interpreter", "ts:twoDModelRobots"]);
+    grunt.registerTask("default", ["ts:pluginController", "ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:undoRedoPlugin", "ts:interpreter", "ts:twoDModelRobots"]);
 }

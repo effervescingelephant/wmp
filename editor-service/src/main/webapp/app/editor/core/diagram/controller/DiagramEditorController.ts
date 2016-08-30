@@ -23,16 +23,14 @@ abstract class DiagramEditorController {
 
     constructor($scope, $attrs) {
         this.scope = $scope;
-        if (window.hasOwnProperty("UndoRedoController")) {
-            this.undoRedoController = new UndoRedoController();
-            $scope.undo = () => {
-                this.undoRedoController.undo();
-            };
+        this.undoRedoController = PluginController.create("UndoRedoController");
+        $scope.undo = () => {
+            PluginController.exec(this.undoRedoController, "undo");
+        };
 
-            $scope.redo = () => {
-                this.undoRedoController.redo();
-            };
-        }
+        $scope.redo = () => {
+            PluginController.exec(this.undoRedoController, "redo");
+        };
         this.nodeTypesMap = {};
         this.paletteController = new PaletteController();
         DiagramElementListener.getNodeProperties = (type: string): Map<Property> => {
@@ -87,8 +85,7 @@ abstract class DiagramEditorController {
         this.propertyEditorController.clearState();
         this.sceneController.clearState();
         this.diagramEditor.clear();
-        if (this.undoRedoController !== undefined)
-            this.undoRedoController.clearStack();
+        PluginController.exec(this.undoRedoController, "clearStack");
     }
 
 }
