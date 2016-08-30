@@ -1,5 +1,3 @@
-
-
 class MotorsStopBlock extends MotorsBlock {
 
     constructor(node: DiagramNode, outboundLinks: Link[], robotModels: RobotModel[]) {

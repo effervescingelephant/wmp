@@ -1,5 +1,3 @@
-
-
 class TrikDrawRectBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

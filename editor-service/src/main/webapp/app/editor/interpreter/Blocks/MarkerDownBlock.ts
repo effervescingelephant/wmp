@@ -1,5 +1,3 @@
-
-
 class MarkerDownBlock extends AbstractBlock {
     
     private robotModels: RobotModel[];

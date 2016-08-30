@@ -1,4 +1,4 @@
-/// <reference path="../../../../../target/properties/ServerProperties.ts" />
+/// <reference path="../../../../../../target/properties/ServerProperties.ts" />
 
 class GeneralConstants {
 

@@ -1,5 +1,3 @@
-
-
 class TrikSmileBlock extends AbstractBlock {
 
     private robotModels: RobotModel[];

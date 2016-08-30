@@ -1,5 +1,3 @@
-
-
 declare enum ReservedVariableType {
     scalar,
     vector

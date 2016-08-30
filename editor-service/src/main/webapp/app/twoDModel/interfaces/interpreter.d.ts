@@ -1,5 +1,3 @@
-
-
 /// <reference path="vendor.d.ts" />
 /// <reference path="two-d-model-core.d.ts" />
 

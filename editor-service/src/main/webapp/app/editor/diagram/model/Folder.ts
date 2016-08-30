@@ -6,15 +6,15 @@ class Folder {
     private childrenFolders: Folder[];
     private diagrams: Diagram[];
 
-    public static createFromDAO(folder: TFolder, parent: Folder): Folder {
+    public static createFromThrift(folder: TFolder, parent: Folder): Folder {
         var diagrams: Diagram[] = [];
         for (var i = 0; i < folder.diagrams.length; i++) {
-            diagrams.push(Diagram.createFromDAO(folder.diagrams[i]));
+            diagrams.push(Diagram.createFromThrift(folder.diagrams[i]));
         }
         var resultFolder: Folder = new Folder(folder.id, folder.folderName, parent, diagrams);
 
         for (var i = 0; i < folder.childrenFolders.length; i++) {
-            resultFolder.addChild(Folder.createFromDAO(folder.childrenFolders[i], resultFolder));
+            resultFolder.addChild(Folder.createFromThrift(folder.childrenFolders[i], resultFolder));
         }
 
         return resultFolder;

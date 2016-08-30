@@ -1,5 +1,3 @@
-
-
 class TrikDrawEllipseBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

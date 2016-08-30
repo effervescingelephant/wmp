@@ -3,7 +3,7 @@ class Diagram {
     private id: number;
     private name: string;
 
-    public static createFromDAO(diagram: TDiagram) {
+    public static createFromThrift(diagram: TDiagram) {
         return new Diagram(diagram.id, diagram.name)
     }
 

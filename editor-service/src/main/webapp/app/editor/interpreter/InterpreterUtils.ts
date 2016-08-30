@@ -1,5 +1,3 @@
-
-
 class InterpreterUtils {
 
     public static getOperatorFunctionByString(operatorString: string) {

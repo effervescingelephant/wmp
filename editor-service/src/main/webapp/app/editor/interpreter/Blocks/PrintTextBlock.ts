@@ -1,5 +1,3 @@
-
-
 class PrintTextBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

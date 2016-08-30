@@ -1,5 +1,3 @@
-
-
 class MarkerUpBlock extends AbstractBlock {
 
     private robotModels: RobotModel[];

@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 out: "resources/js/compiled/twoDModelCore.js"
             },
             editor: {
-                src: ["app/editor/diagram/**/*.ts", "app/editor/*.ts"],
+                src: ["app/editor/diagram/**/*.ts"],
                 out: "resources/js/compiled/editor.js"
             },
             undoRedoPlugin: {

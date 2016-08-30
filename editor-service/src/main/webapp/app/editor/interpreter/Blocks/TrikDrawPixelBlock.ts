@@ -1,5 +1,3 @@
-
-
 class TrikDrawPixelBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

@@ -1,35 +1,4 @@
-
-
-/// <reference path="Blocks/AbstractBlock.ts" />
-/// <reference path="Blocks/ConditionBlock.ts" />
-/// <reference path="Blocks/MotorsBlock.ts" />
-/// <reference path="Blocks/MotorsDirectionBlock.ts" />
-/// <reference path="Blocks/InitialBlock.ts" />
-/// <reference path="Blocks/FinalBlock.ts" />
-/// <reference path="Blocks/IfBlock.ts" />
-/// <reference path="Blocks/FunctionBlock.ts" />
-/// <reference path="Blocks/MotorsForwardBlock.ts" />
-/// <reference path="Blocks/MotorsBackwardBlock.ts" />
-/// <reference path="Blocks/MotorsStopBlock.ts" />
-/// <reference path="Blocks/TimerBlock.ts" />
-/// <reference path="Blocks/SwitchBlock.ts" />
-/// <reference path="Blocks/MarkerUpBlock.ts" />
-/// <reference path="Blocks/MarkerDownBlock.ts" />
-/// <reference path="Blocks/VariableInitBlock.ts" />
-/// <reference path="Blocks/RandomInitBlock.ts" />
-/// <reference path="Blocks/EndIfBlock.ts" />
-/// <reference path="Blocks/TrikSadSmileBlock.ts" />
-/// <reference path="Blocks/TrikSmileBlock.ts" />
-/// <reference path="Blocks/TrikSetPainterColorBlock.ts" />
-/// <reference path="Blocks/TrikSetPainterWidthBlock.ts" />
-/// <reference path="Blocks/TrikDrawEllipseBlock.ts" />
-/// <reference path="Blocks/ClearScreenBlock.ts" />
-/// <reference path="Blocks/TrikDrawPixelBlock.ts" />
-/// <reference path="Blocks/TrikDrawLineBlock.ts" />
-/// <reference path="Blocks/TrikDrawRectBlock.ts" />
-/// <reference path="Blocks/TrikSetBackgroundBlock.ts" />
-/// <reference path="Blocks/PrintTextBlock.ts" />
-
+/// <reference path="Blocks/AllBlocks.ts" />
 /// <reference path="Parser.ts" />
 
 class BlockFactory {

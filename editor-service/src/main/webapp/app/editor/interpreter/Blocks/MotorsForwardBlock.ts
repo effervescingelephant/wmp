@@ -1,5 +1,3 @@
-
-
 class MotorsForwardBlock extends MotorsDirectionBlock {
 
     constructor(node: DiagramNode, outboundLinks: Link[], robotModels: RobotModel[], interpreter: Interpreter) {

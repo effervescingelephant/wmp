@@ -1,5 +1,3 @@
-
-
 class TrikSetPainterWidthBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

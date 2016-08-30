@@ -1,4 +1,3 @@
-
 abstract class ConditionBlock extends AbstractBlock {
 
     protected getGuard(link : Link): string {

@@ -8,8 +8,7 @@
 /// <reference path="../../../../resources/thrift/struct/Diagram_types.d.ts" />
 /// <reference path="../../../../resources/thrift/editor/EditorServiceThrift.d.ts" />
 /// <reference path="../../../../resources/types/thrift/Thrift.d.ts" />
-/// <reference path="../../GeneralConstants.ts" />
-
+/// <reference path="../GeneralConstants.ts" />
 
 class DiagramMenuController {
 
@@ -33,7 +32,7 @@ class DiagramMenuController {
         var menuManager = this;
         try {
             var folderTree = menuManager.getClient().getFolderTree();
-            menuManager.folderTree = Folder.createFromDAO(folderTree, null);
+            menuManager.folderTree = Folder.createFromThrift(folderTree, null);
             menuManager.currentFolder = menuManager.folderTree;
         }
         catch (ouch) {

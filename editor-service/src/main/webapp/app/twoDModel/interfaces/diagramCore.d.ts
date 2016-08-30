@@ -1,5 +1,3 @@
-
-
 declare class UIDGenerator {
     static generate(): string;
 }

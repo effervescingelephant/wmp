@@ -1,5 +1,3 @@
-
-
 class TrikSetPainterColorBlock extends AbstractBlock {
 
     private interpreter: Interpreter;

@@ -1,5 +1,3 @@
-
-
 /// <reference path="BlockFactory.ts" />
 /// <reference path="../interfaces/diagramFull.d.ts" />
 /// <reference path="../interfaces/two-d-model-core.d.ts" />

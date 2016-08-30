@@ -1,5 +1,3 @@
-
-
 class TrikSetBackgroundBlock extends AbstractBlock {
     
     private robotModels: RobotModel[];
