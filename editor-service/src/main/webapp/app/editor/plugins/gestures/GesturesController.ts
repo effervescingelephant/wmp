@@ -1,11 +1,13 @@
-/// <reference path="../../model/Gesture.ts" />
-/// <reference path="../../../constants/GeneralConstants.d.ts" />
-/// <reference path="../../../../interfaces/vendor.d.ts" />
+/// <reference path="Gesture.ts" />
+/// <reference path="../../core/constants/GeneralConstants.d.ts" />
+/// <reference path="../../interfaces/vendor.d.ts" />
+/// <reference path="../../interfaces/gesturesScene.ts" />
+/// <reference path="../../core/utils/XmlHttpFactory.ts" />
 
 class GesturesController {
 
-    private sceneController: SceneController;
-    private paper: DiagramScene;
+    private sceneController: GesturesSceneController;
+    private paper: GesturesDiagramScene;
     private timer: number;
     private currentTime: number;
     private date: Date;
@@ -15,9 +17,9 @@ class GesturesController {
     private gesturesMatcher: GesturesMatcher;
     private rightButtonDown;
 
-    constructor(paperController: SceneController, paper: DiagramScene) {
-        this.sceneController = paperController;
-        this.paper = paper;
+    constructor(args: any[]) {
+        this.sceneController = args[0];
+        this.paper = args[1];
         this.date = new Date();
         this.flagDraw = false;
         this.rightButtonDown = false;
@@ -33,7 +35,7 @@ class GesturesController {
         this.flagDraw = true;
     }
 
-    public onMouseMove(event): void {
+    public onMouseMove(args: any[]): void {
         if (!(this.rightButtonDown)) {
             return;
         }
@@ -41,6 +43,8 @@ class GesturesController {
         if (this.flagDraw === false) {
             return;
         }
+
+        var event = args[0];
 
         var offsetX = (event.pageX - $("#" + this.paper.getId()).offset().left +
             $("#" + this.paper.getId()).scrollLeft());
@@ -62,18 +66,20 @@ class GesturesController {
         this.pointList.push(pair);
     }
 
-    public onMouseDown(event): void {
+    public onMouseDown(args: any[]): void {
+        var event = args[0];
         if (event.button === 2) {
             this.rightButtonDown = true;
         }
     }
 
-    public onMouseUp(event): void {
+    public onMouseUp(args: any[]): void {
         this.rightButtonDown = false;
         if (this.flagDraw === false) {
             return;
         }
         this.flagDraw = false;
+        var event = args[0];
         if (this.sceneController.getCurrentElement()) {
             this.finishDraw(event);
         } else {
@@ -89,7 +95,7 @@ class GesturesController {
             pencil[i - 1].parentNode.removeChild(pencil[i - 1]);
         }
 
-        var currentElement: DiagramElement = this.sceneController.getCurrentElement();
+        var currentElement = this.sceneController.getCurrentElement();
 
         if (currentElement) {
             this.sceneController.createLinkBetweenCurrentAndEventTargetElements(event);
@@ -138,4 +144,3 @@ class GesturesController {
     }
 
 }
-

@@ -4,10 +4,22 @@ declare class PluginController {
 }
 
 declare class UndoRedoController {
-    public addCommand(...args: any[]);
+    /*
+    public addCommand(command: Command);
     public undo(): void;
     public redo(): void;
     public clearStack(): void;
     public bindKeyboardHandler();
     public unbindKeyboardHandler();
+    */
+}
+
+declare class GesturesController {
+    /*
+    constructor(paperController: SceneController, paper: DiagramScene);
+    public startDrawing(): void;
+    public onMouseMove(event): void;
+    public onMouseDown(event): void;
+    public onMouseUp(event): void;
+    */
 }

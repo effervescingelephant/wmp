@@ -22,6 +22,10 @@ module.exports = function (grunt) {
                 src: ["app/editor/plugins/undo-redo/**/*.ts"],
                 out: "resources/js/compiled/undoRedoPlugin.js"
             },
+            gesturesPlugin: {
+                src: ["app/editor/plugins/gestures/**/*.ts"],
+                out: "resources/js/compiled/gesturesPlugin.js"
+            },
             interpreter: {
                 src: ["app/editor/interpreter/**/*.ts"],
                 out: "resources/js/compiled/interpreter.js"
@@ -34,5 +38,5 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", ["ts:pluginController", "ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:undoRedoPlugin", "ts:interpreter", "ts:twoDModelRobots"]);
+    grunt.registerTask("default", ["ts:pluginController", "ts:editorCore", "ts:twoDModelCore", "ts:editor", "ts:undoRedoPlugin", "ts:gesturesPlugin", "ts:interpreter", "ts:twoDModelRobots"]);
 }

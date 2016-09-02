@@ -17,5 +17,6 @@
     <script src="<c:url value='/resources/js/compiled/twoDModelCore.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/editor.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/undoRedoPlugin.js' />"></script>
+    <script src="<c:url value='/resources/js/compiled/gesturesPlugin.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/interpreter.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/two-d-model-robots.js' />"></script>

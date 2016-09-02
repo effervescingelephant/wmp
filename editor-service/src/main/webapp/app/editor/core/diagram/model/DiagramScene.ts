@@ -3,8 +3,9 @@
 /// <reference path="Link.ts" />
 /// <reference path="../controller/DiagramElementListener.ts" />
 /// <reference path="../../../interfaces/vendor.d.ts" />
+/// <reference path="../../../interfaces/gesturesScene.ts" />
 
-class DiagramScene extends joint.dia.Paper {
+class DiagramScene extends joint.dia.Paper implements GesturesDiagramScene {
 
     private htmlId: string;
     private graph: joint.dia.Graph;

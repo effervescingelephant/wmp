@@ -1,5 +1,5 @@
 /// <reference path="GesturesUtils.ts" />
-/// <reference path="../../model/Gesture.ts" />
+/// <reference path="Gesture.ts" />
 
 class GesturesMatcher {
 

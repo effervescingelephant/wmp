@@ -159,13 +159,6 @@ declare interface Command {
     isRevertible(): boolean;
 }
 
-declare class Gesture {
-    name: string;
-    key: string[];
-    factor: number;
-    constructor(name : string, key : string[], factor: number)
-}
-
 declare class HtmlView {
     protected content: string;
     public getContent(): string;
@@ -290,34 +283,6 @@ declare class DiagramExporter {
     protected exportLinks(diagramParts: DiagramParts);
     protected exportProperties(properties: Map<Property>);
     protected exportVertices(vertices): string;
-}
-
-declare module GesturesUtils {
-    export class Pair {
-        first: number;
-        second: number;
-        constructor(first : number, second : number);
-    }
-
-    export class PairString {
-        first: string;
-        second: string;
-        constructor(curString: string);
-        public getString(): string;
-    }
-}
-
-declare class GesturesController {
-    constructor(sceneController: SceneController);
-    public startDrawing(): void;
-    public onMouseMove(event): void;
-    public onMouseDown(event): void;
-    public onMouseUp(event): void;
-}
-
-declare class GesturesMatcher {
-    constructor(gestures: Gesture[])
-    public getMatches(pointList: GesturesUtils.Pair[]): string[];
 }
 
 declare class DiagramElementListener {

@@ -26,7 +26,7 @@ class UndoRedoController {
         this.bindKeyboardHandler();
     }
 
-    public addCommand(...args: any[]) {
+    public addCommand(args: any[]) {
         var command = args[0];
         if (command.isRevertible()) {
             if (this.pointer < this.stack.length - 1) {
