@@ -1,4 +1,5 @@
 /// <reference path="InterpreterUtils.ts" />
+/// <reference path="../../utils/Map.ts" />
 
 class Parser {
 

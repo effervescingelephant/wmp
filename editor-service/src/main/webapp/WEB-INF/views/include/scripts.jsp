@@ -13,9 +13,9 @@
     <script src="<c:url value='/resources/js/transform-to-element-fix.js' />"></script>
 
     <script src="<c:url value='/resources/js/compiled/pluginController.js' />"></script>
+    <script src="<c:url value='/resources/js/compiled/editorUtils.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/editorCore.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/twoDModelCore.js' />"></script>
-    <script src="<c:url value='/resources/js/compiled/editor.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/undoRedoPlugin.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/gesturesPlugin.js' />"></script>
     <script src="<c:url value='/resources/js/compiled/interpreter.js' />"></script>

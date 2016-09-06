@@ -1,8 +1,8 @@
 /// <reference path="Gesture.ts" />
-/// <reference path="../../core/constants/GeneralConstants.d.ts" />
+/// <reference path="../../core/constants/GeneralConstants.ts" />
 /// <reference path="../../interfaces/vendor.d.ts" />
 /// <reference path="../../interfaces/gesturesScene.ts" />
-/// <reference path="../../core/utils/XmlHttpFactory.ts" />
+/// <reference path="../../utils/XmlHttpFactory.ts" />
 
 class GesturesController {
 
