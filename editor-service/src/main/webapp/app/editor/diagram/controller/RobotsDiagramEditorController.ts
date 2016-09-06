@@ -1,6 +1,7 @@
 /// <reference path="DiagramMenuController.ts" />
 /// <reference path="parsers/DiagramThriftParser.ts" />
-/// <reference path="../../interfaces/interpreter.d.ts" />
+/// <reference path="../../interfaces/plugins/interpreter.d.ts" />
+/// <reference path="../../interfaces/pluginController.d.ts" />
 /// <reference path="../../interfaces/diagramFull.d.ts" />
 /// <reference path="../../interfaces/vendor.d.ts" />
 
@@ -14,7 +15,7 @@ class RobotsDiagramEditorController extends DiagramEditorController {
         super($scope, $attrs);
         this.diagramParser = new DiagramThriftParser();
         this.menuController = new DiagramMenuController(this);
-        this.diagramInterpreter = new Interpreter();
+        this.diagramInterpreter = PluginController.create("Interpreter");
 
         $scope.openTwoDModel = () => { this.openTwoDModel(); };
         $scope.createNewDiagram = () => { this.menuController.createNewDiagram(); };
@@ -24,11 +25,11 @@ class RobotsDiagramEditorController extends DiagramEditorController {
         $scope.clearAll = () => { this.clearAll(); };
 
         $scope.$on("interpret", (event, timeline) => {
-            this.diagramInterpreter.interpret(this.getGraph(), this.getNodesMap(), this.getLinksMap(), timeline);
+            PluginController.exec(this.diagramInterpreter, "interpret", this.getGraph(), this.getNodesMap(), this.getLinksMap(), timeline);
         });
 
         $scope.$on("stop", (event) => {
-            this.diagramInterpreter.stop();
+            PluginController.exec(this.diagramInterpreter, "stop");
         });
 
         this.elementsTypeLoader.load((elementTypes: ElementTypes): void => {

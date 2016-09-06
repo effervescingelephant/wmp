@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 out: "resources/js/compiled/gesturesPlugin.js"
             },
             interpreter: {
-                src: ["app/editor/interpreter/**/*.ts"],
+                src: ["app/editor/plugins/interpreter/**/*.ts"],
                 out: "resources/js/compiled/interpreter.js"
             },
             twoDModelRobots: {

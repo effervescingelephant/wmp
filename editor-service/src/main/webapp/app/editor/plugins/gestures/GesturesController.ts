@@ -17,9 +17,9 @@ class GesturesController {
     private gesturesMatcher: GesturesMatcher;
     private rightButtonDown;
 
-    constructor(args: any[]) {
-        this.sceneController = args[0];
-        this.paper = args[1];
+    constructor(sceneController: GesturesSceneController, diagramScene: GesturesDiagramScene) {
+        this.sceneController = sceneController;
+        this.paper = diagramScene;
         this.date = new Date();
         this.flagDraw = false;
         this.rightButtonDown = false;
@@ -35,7 +35,7 @@ class GesturesController {
         this.flagDraw = true;
     }
 
-    public onMouseMove(args: any[]): void {
+    public onMouseMove(event): void {
         if (!(this.rightButtonDown)) {
             return;
         }
@@ -43,8 +43,6 @@ class GesturesController {
         if (this.flagDraw === false) {
             return;
         }
-
-        var event = args[0];
 
         var offsetX = (event.pageX - $("#" + this.paper.getId()).offset().left +
             $("#" + this.paper.getId()).scrollLeft());
@@ -66,20 +64,18 @@ class GesturesController {
         this.pointList.push(pair);
     }
 
-    public onMouseDown(args: any[]): void {
-        var event = args[0];
+    public onMouseDown(event): void {
         if (event.button === 2) {
             this.rightButtonDown = true;
         }
     }
 
-    public onMouseUp(args: any[]): void {
+    public onMouseUp(event): void {
         this.rightButtonDown = false;
         if (this.flagDraw === false) {
             return;
         }
         this.flagDraw = false;
-        var event = args[0];
         if (this.sceneController.getCurrentElement()) {
             this.finishDraw(event);
         } else {

@@ -6,7 +6,8 @@
 /// <reference path="../model/Property.ts" />
 /// <reference path="../view/HtmlView.ts" />
 /// <reference path="../../../interfaces/vendor.d.ts" />
-/// <reference path="../../../interfaces/plugins.d.ts" />
+/// <reference path="../../../interfaces/pluginController.d.ts" />
+/// <reference path="../../../interfaces/plugins/undo-redo.d.ts" />
 
 class PropertyEditorController {
 

@@ -1,4 +1,4 @@
-/// <reference path="plugins.d.ts" />
+/// <reference path="plugins/undo-redo.d.ts" />
 
 declare class UIDGenerator {
     static generate(): string;

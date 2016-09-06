@@ -1,7 +1,7 @@
 /// <reference path="BlockFactory.ts" />
-/// <reference path="../interfaces/diagramFull.d.ts" />
-/// <reference path="../interfaces/two-d-model-core.d.ts" />
-/// <reference path="../interfaces/vendor.d.ts" />
+/// <reference path="../../interfaces/diagramFull.d.ts" />
+/// <reference path="../../interfaces/two-d-model-core.d.ts" />
+/// <reference path="../../interfaces/vendor.d.ts" />
 
 class Interpreter {
 
@@ -17,7 +17,7 @@ class Interpreter {
         this.blockFactory = new BlockFactory();
     }
 
-    public interpret(graph: joint.dia.Graph, nodesMap: Map<DiagramNode>, linksMap: Map<Link>, 
+    public interpret(graph: joint.dia.Graph, nodesMap: Map<DiagramNode>, linksMap: Map<Link>,
                      timeline: Timeline): void {
         this.clearState();
         this.timeline = timeline;

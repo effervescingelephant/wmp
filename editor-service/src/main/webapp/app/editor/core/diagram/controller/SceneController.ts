@@ -7,8 +7,10 @@
 /// <reference path="../model/commands/Command.ts"/>
 /// <reference path="../model/commands/SceneCommandFactory.ts" />
 /// <reference path="../../../interfaces/vendor.d.ts" />
-/// <reference path="../../../interfaces/plugins.d.ts" />
+/// <reference path="../../../interfaces/pluginController.d.ts" />
 /// <reference path="../../../interfaces/gesturesScene.ts" />
+/// <reference path="../../../interfaces/plugins/undo-redo.d.ts" />
+/// <reference path="../../../interfaces/plugins/gestures.d.ts" />
 
 class SceneController implements GesturesSceneController {
 
