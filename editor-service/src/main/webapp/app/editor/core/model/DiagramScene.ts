@@ -15,20 +15,17 @@ class DiagramScene extends joint.dia.Paper implements GesturesDiagramScene {
     private zoom: number;
 
     constructor(id: string, graph: joint.dia.Graph) {
-        this.htmlId = id;
-        this.graph = graph;
-        this.nodesMap = {};
-        this.linksMap = {};
-        this.gridSize = 25;
-        var zoomAttr: number = parseFloat($("#" + this.htmlId).attr("zoom"));
-        this.zoom = (zoomAttr) ? zoomAttr : 1;
+        let htmlId = id;
+        let gridSize = 25;
+        let zoomAttr: number = parseFloat($("#" + htmlId).attr("zoom"));
+        let zoom = (zoomAttr) ? zoomAttr : 1;
 
         super({
-            el: $('#' + this.htmlId),
+            el: $('#' + htmlId),
             width: 2000,
             height: 2000,
             model: graph,
-            gridSize: this.gridSize,
+            gridSize: gridSize,
             defaultLink: new joint.dia.Link({
                 attrs: {
                     '.connection': { stroke: 'black' },
@@ -42,8 +39,18 @@ class DiagramScene extends joint.dia.Paper implements GesturesDiagramScene {
             validateMagnet: function (cellView, magnet) {
                 return magnet.getAttribute('magnet') !== 'passive';
             },
-            diagramElementView: joint.dia.ElementView.extend(this.getDiagramElementView())
+            diagramElementView: joint.dia.ElementView.extend(function () {
+                return jQuery.extend(joint.shapes.basic.PortsViewInterface, { pointerdown: DiagramElementListener.pointerdown});
+            })
         });
+        
+        this.htmlId = htmlId;
+        this.gridSize = gridSize;
+        this.zoom = zoom;
+
+        this.graph = graph;
+        this.nodesMap = {};
+        this.linksMap = {};
 
         this.scale(this.zoom, this.zoom);
     }
