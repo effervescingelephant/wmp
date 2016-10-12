@@ -2,6 +2,10 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         ts: {
+            options: {
+                experimentalDecorators: true,
+                emitDecoratorMetadata: true
+            },
             pluginController: {
                 src: ["app/editor/plugins/*.ts"],
                 out: "resources/js/compiled/pluginController.js"

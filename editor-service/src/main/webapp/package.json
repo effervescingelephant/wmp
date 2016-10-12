@@ -1,7 +1,11 @@
 {
-    "devDependencies": {
-        "grunt": "0.4.5",
-        "grunt-ts": "5.5.1",
-        "grunt-cli" : "1.2.0"
-    }
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-ts": "5.5.1",
+    "grunt-cli": "1.2.0"
+  },
+  "dependencies": {
+    "inversify": "^2.0.0-rc.14",
+    "reflect-metadata": "^0.1.8"
+  }
 }
