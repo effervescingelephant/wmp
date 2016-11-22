@@ -178,7 +178,7 @@ class SceneController {
                 this.scene.getZoom();
 
             return ((mXBegin <= leftElementPos) && (mXEnd >= leftElementPos)
-                && (mYBegin <= topElementPos) && (mYEnd >= topElementPos) && (this.rightClickFlag))
+            && (mYBegin <= topElementPos) && (mYEnd >= topElementPos) && (this.rightClickFlag))
         });
 
         if (elementBelow) {
