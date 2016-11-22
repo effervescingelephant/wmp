@@ -166,4 +166,6 @@ class DiagramScene extends joint.dia.Paper {
         this.graph.addCell(link.getJointObject());
     }
 
+
+
 }

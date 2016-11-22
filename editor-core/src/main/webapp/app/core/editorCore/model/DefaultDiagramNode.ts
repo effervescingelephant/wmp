@@ -62,36 +62,33 @@ class DefaultDiagramNode implements DiagramNode {
     }
 
 
-    pointerdown(evt, x, y) : void {
+    // pointerdown(evt, x, y) : void {
+    //
+    //     var cellView = this.jointObject.diagramElementView;
+    //     var bbox = cellView.getBBox();
+    //     cellView.highlight(cellView.model.id);
+    //     var paddingPercent = 5;
+    //
+    //
+    //     cellView._dx = x;
+    //     cellView._dy = y;
+    //
+    //     cellView.pointerdown(evt,x,y);
+    //
+    // };
 
-        var cellView = this.jointObject.diagramElementView;
-        var bbox = cellView.getBBox();
-        cellView.highlight(cellView.model.id);
-        var paddingPercent = 5;
-        this.isTopResizing = isTopBorderClicked(bbox, x, y, paddingPercent);
-        this.isBottomResizing = isBottomBorderClicked(bbox, x, y, paddingPercent);
-        this.isRightResizing = isRightBorderClicked(bbox, x, y, paddingPercent);
-        this.isLeftResizing = isLeftBorderClicked(bbox, x, y, paddingPercent);
-
-        cellView._dx = x;
-        cellView._dy = y;
-
-        cellView.pointerdown(evt,x,y);
-
-    };
-
-    pointerup(evt, x, y) : void {
-
-        var cellView = this.jointObject.diagramElementView;
-        cellView.unhighlight(cellView.model.id);
-        this.isTopResizing = false;
-        this.isBottomResizing = false;
-        this.isRightResizing = false;
-        this.isLeftResizing = false;
-
-        cellView.pointerup(evt,x,y);
-
-    };
+    // pointerup(evt, x, y) : void {
+    //
+    //     var cellView = this.jointObject.diagramElementView;
+    //     cellView.unhighlight(cellView.model.id);
+    //     this.isTopResizing = false;
+    //     this.isBottomResizing = false;
+    //     this.isRightResizing = false;
+    //     this.isLeftResizing = false;
+    //
+    //     cellView.pointerup(evt,x,y);
+    //
+    // };
 
 
     pointermove(evt, x, y) : void {
@@ -269,6 +266,19 @@ class DefaultDiagramNode implements DiagramNode {
             x: this.jointObject.get("position")['x'] * zoom,
             y: this.jointObject.get("position")['y'] * zoom
         };
+    }
+
+    setResizingFlags(bbox, x: number, y: number, paddingPercent) : void {
+        this.isTopResizing = isTopBorderClicked(bbox, x, y, paddingPercent);
+        this.isBottomResizing = isBottomBorderClicked(bbox, x, y, paddingPercent);
+        this.isRightResizing = isRightBorderClicked(bbox, x, y, paddingPercent);
+        this.isLeftResizing = isLeftBorderClicked(bbox, x, y, paddingPercent);
+    }
+    clearResizingFlags() : void {
+        this.isTopResizing = false;
+        this.isBottomResizing = false;
+        this.isRightResizing = false;
+        this.isLeftResizing = false;
     }
 
 }
