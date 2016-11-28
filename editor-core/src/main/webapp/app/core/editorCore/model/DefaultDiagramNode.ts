@@ -97,6 +97,7 @@ class DefaultDiagramNode implements DiagramNode {
         if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
         {
             var bbox = cellView.getBBox();
+            var model = <joint.dia.Element> cellView.model;
             var diffX = x - cellView._dx;
             var diffY = y - cellView._dy;
 
