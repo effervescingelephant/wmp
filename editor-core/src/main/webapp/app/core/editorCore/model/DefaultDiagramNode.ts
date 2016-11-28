@@ -91,9 +91,9 @@ class DefaultDiagramNode implements DiagramNode {
     // };
 
 
-    pointermove(evt, x, y) : void {
-        var cellView = this.jointObject.diagramElementView;
-        var model = <joint.dia.Element> cellView.model;
+    pointermove(cellView, evt, x, y) : void {
+        // var cellView = this.jointObject.diagramElementView;
+
         if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
         {
             var bbox = cellView.getBBox();

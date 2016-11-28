@@ -290,7 +290,7 @@ class SceneController {
         // if (event.button == MouseButton.left) {
         var node: DiagramNode = this.scene.getNodeById(cellView.model.id);
         if (node) {
-            node.pointermove(event, x, y);
+            node.pointermove(cellView, event, x, y);
             // }
         }
     }
