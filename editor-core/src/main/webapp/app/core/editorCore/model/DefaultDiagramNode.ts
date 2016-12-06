@@ -21,6 +21,8 @@ class DefaultDiagramNode implements DiagramNode {
     private isBottomResizing: boolean = false;
     private isRightResizing: boolean = false;
     private isLeftResizing: boolean = false;
+    private lastMousePositionX;
+    private lastMousePositionY;
 
 
     constructor(name: string, type: string, x: number, y: number, properties: Map<Property>, imagePath: string,
@@ -71,8 +73,13 @@ class DefaultDiagramNode implements DiagramNode {
             cellView.options.interactive = false;
             var bbox = cellView.getBBox();
             var model = <joint.dia.Element> cellView.model;
-            var diffX = x - cellView._dx;
-            var diffY = y - cellView._dy;
+            var diffX = x - this.lastMousePositionX;
+            var diffY = y - this.lastMousePositionY;
+
+            console.log("DDN, lastX: ", this.lastMousePositionX,
+                "lastY:" , this.lastMousePositionY,
+                "x:", x,
+                "y:", y);
 
             var resize_direction = '';
             if (this.isTopResizing)
@@ -81,17 +88,23 @@ class DefaultDiagramNode implements DiagramNode {
                 if (this.isLeftResizing)
                 {
                     resize_direction = 'top-left';
-                     //model.resize(bbox.width - diffX, bbox.height - diffY,  { direction: resize_direction });
-                    model.resize(bbox.width - diffX, bbox.height - diffY);
+                    console.log("DDN resize direction: ", resize_direction);
+                    model.resize(bbox.width - diffX, bbox.height - diffY,  { direction: resize_direction });
+                    // model.resize(100, 100,  { direction: resize_direction });
+                    // model.resize(bbox.width - diffX, bbox.height - diffY);
                     return;
                 } else if (this.isRightResizing)
                 {
                     resize_direction = 'top-right';
-                     model.resize(bbox.width + diffX, bbox.height - diffY);
+                    console.log("DDN resize direction: ", resize_direction,
+                        bbox.width + diffX,
+                        bbox.height - diffY);
+                    model.resize(bbox.width + diffX, bbox.height - diffY,  { direction: resize_direction });
                     return;
                 }
-                // model.resize(bbox.width, bbox.height - diffY,  { direction: resize_direction });
-                model.resize(bbox.width, bbox.height - diffY);
+                console.log("DDN resize direction: ", resize_direction);
+                model.resize(bbox.width, bbox.height - diffY,  { direction: resize_direction });
+                // model.resize(bbox.width, bbox.height - diffY);
                 return;
             } else if (this.isBottomResizing)
             {
@@ -99,33 +112,38 @@ class DefaultDiagramNode implements DiagramNode {
                 if (this.isLeftResizing)
                 {
                     resize_direction = 'bottom-left';
-                    //model.resize(bbox.width - diffX, bbox.height + diffY,  { direction: resize_direction });
-                    model.resize(bbox.width - diffX, bbox.height + diffY);
+                    console.log("DDN resize direction: ", resize_direction);
+                    model.resize(bbox.width - diffX, bbox.height + diffY,  { direction: resize_direction });
+                    // model.resize(bbox.width - diffX, bbox.height + diffY);
                     return;
                 } else if (this.isRightResizing)
                 {
                     resize_direction = 'bottom-right';
-                    //model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: resize_direction });
-                    model.resize(bbox.width + diffX, bbox.height + diffY);
+                    console.log("DDN resize direction: ", resize_direction);
+                    model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: resize_direction });
+                    // model.resize(bbox.width + diffX, bbox.height + diffY);
                     return;
                 }
-                //model.resize(bbox.width, bbox.height + diffY,  { direction: resize_direction });
-                model.resize(bbox.width, bbox.height + diffY);
+                console.log("DDN resize direction: ", resize_direction);
+                model.resize(bbox.width, bbox.height + diffY,  { direction: resize_direction });
+                // model.resize(bbox.width, bbox.height + diffY);
                 return;
             } else if (this.isLeftResizing)
             {
                 resize_direction = 'left';
-                // model.resize(bbox.width - diffX, bbox.height,  { direction: resize_direction });
-                model.resize(bbox.width - diffX, bbox.height);
+                console.log("DDN resize direction: ", resize_direction);
+                model.resize(bbox.width - diffX, bbox.height,  { direction: resize_direction });
+                // model.resize(bbox.width - diffX, bbox.height);
                 return;
             } else if (this.isRightResizing)
             {
                 resize_direction = 'right';
-                // model.resize(bbox.width + diffX, bbox.height,  { direction: resize_direction });
-                model.resize(bbox.width + diffX, bbox.height);
+                console.log("DDN resize direction: ", resize_direction);
+                model.resize(bbox.width + diffX, bbox.height,  { direction: resize_direction });
+                // model.resize(bbox.width + diffX, bbox.height);
                 return;
             }
-             // cellView.model.resize(bbox.width + diffX, bbox.height + diffY);
+            // cellView.model.resize(bbox.width + diffX, bbox.height + diffY);
 
         }
 
@@ -236,11 +254,13 @@ class DefaultDiagramNode implements DiagramNode {
         };
     }
 
-    setResizingFlags(bbox, x: number, y: number, paddingPercent) : void {
+    setResizingFields(bbox, x: number, y: number, paddingPercent) : void {
         this.isTopResizing = isTopBorderClicked(bbox, x, y, paddingPercent);
         this.isBottomResizing = isBottomBorderClicked(bbox, x, y, paddingPercent);
         this.isRightResizing = isRightBorderClicked(bbox, x, y, paddingPercent);
         this.isLeftResizing = isLeftBorderClicked(bbox, x, y, paddingPercent);
+        this.lastMousePositionX = x;
+        this.lastMousePositionY = y;
         console.log("DDN: ",  this.isTopResizing, this.isBottomResizing, this.isRightResizing, this.isLeftResizing);
     }
     clearResizingFlags() : void {

@@ -259,7 +259,7 @@ class SceneController {
             this.lastCellMouseDownPosition.y = node.getY();
             cellView.highlight(cellView.model.id);
             console.log("SC: pointer down");
-            node.setResizingFlags(cellView.getBBox(), x, y, 20);
+            node.setResizingFields(cellView.getBBox(), x, y, 20);
         }
         if (event.button == MouseButton.right) {
             this.rightClickFlag = true;

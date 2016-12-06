@@ -48,7 +48,8 @@ declare module joint {
         class Element extends Cell {
             position(x:number, y:number):Element;
             translate(tx:number, ty?:number):Element;
-            resize(width:number, height:number):Element;
+            // resize(width:number, height:number):Element;
+            resize(width:number, height:number, options : { direction: string }):Element;
             rotate(angle:number, options : {absolute : boolean; origin: {x:number;y:number}}):Element;
             remove(): void;
         }
