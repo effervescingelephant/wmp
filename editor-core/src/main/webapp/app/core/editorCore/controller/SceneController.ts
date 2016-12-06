@@ -246,24 +246,24 @@ class SceneController {
     }
 
     private cellPointerdownListener(cellView, event, x, y): void {
-        // this.clickFlag = true;
-        // this.rightClickFlag = false;
-        //
-        // var element: DiagramElement = this.scene.getNodeById(cellView.model.id) ||
-        //     this.scene.getLinkById(cellView.model.id);
-        // this.changeCurrentElement(element);
-        //
-        // if (this.scene.getNodeById(cellView.model.id) && event.button == MouseButton.left) {
-        //     var node:DiagramNode = this.scene.getNodeById(cellView.model.id);
-        //     this.lastCellMouseDownPosition.x = node.getX();
-        //     this.lastCellMouseDownPosition.y = node.getY();
-        //     cellView.highlight(cellView.model.id);
-        //     console.log("SC: pointer down");
-        //     node.setResizingFlags(cellView.getBBox(), x, y, 20);
-        // }
-        // if (event.button == MouseButton.right) {
-        //     this.rightClickFlag = true;
-        // }
+        this.clickFlag = true;
+        this.rightClickFlag = false;
+
+        var element: DiagramElement = this.scene.getNodeById(cellView.model.id) ||
+            this.scene.getLinkById(cellView.model.id);
+        this.changeCurrentElement(element);
+
+        if (this.scene.getNodeById(cellView.model.id) && event.button == MouseButton.left) {
+            var node:DiagramNode = this.scene.getNodeById(cellView.model.id);
+            this.lastCellMouseDownPosition.x = node.getX();
+            this.lastCellMouseDownPosition.y = node.getY();
+            cellView.highlight(cellView.model.id);
+            console.log("SC: pointer down");
+            node.setResizingFlags(cellView.getBBox(), x, y, 20);
+        }
+        if (event.button == MouseButton.right) {
+            this.rightClickFlag = true;
+        }
     }
 
     private cellPointerupListener(cellView, event, x, y): void {

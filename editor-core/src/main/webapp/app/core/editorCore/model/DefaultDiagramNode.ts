@@ -63,10 +63,12 @@ class DefaultDiagramNode implements DiagramNode {
 
     pointermove(cellView, evt, x, y) : void {
         // var cellView = this.jointObject.diagramElementView;
+        cellView.options.interactive = true;
 
         if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
         {
             console.log("DDN resize move: ",  this.isTopResizing, this.isBottomResizing, this.isRightResizing, this.isLeftResizing);
+            cellView.options.interactive = false;
             var bbox = cellView.getBBox();
             var model = <joint.dia.Element> cellView.model;
             var diffX = x - cellView._dx;
@@ -125,14 +127,9 @@ class DefaultDiagramNode implements DiagramNode {
             }
              // cellView.model.resize(bbox.width + diffX, bbox.height + diffY);
 
-        } else {
-
-            cellView._dx = x;
-            cellView._dy = y;
-
-            console.log("DDN: move to ", x, y);
-            // cellView.pointermove(evt,x,y);
         }
+
+
     };
 
 
