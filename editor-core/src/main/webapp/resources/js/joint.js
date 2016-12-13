@@ -19691,7 +19691,7 @@ joint.dia.Element = joint.dia.Cell.extend({
         this.trigger('batch:stop');
 
         return this;
-    }
+    },
 
     rotate: function (angle, absolute) {
 
