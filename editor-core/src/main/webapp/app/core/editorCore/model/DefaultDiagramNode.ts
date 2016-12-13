@@ -67,82 +67,102 @@ class DefaultDiagramNode implements DiagramNode {
         // var cellView = this.jointObject.diagramElementView;
         cellView.options.interactive = true;
 
-        if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
+        // if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
+        if (this.isBottomResizing || this.isRightResizing)
         {
-            console.log("DDN resize move: ",  this.isTopResizing, this.isBottomResizing, this.isRightResizing, this.isLeftResizing);
+            // console.log("DDN resize move: ",  this.isTopResizing, this.isBottomResizing, this.isRightResizing, this.isLeftResizing);
             cellView.options.interactive = false;
             var bbox = cellView.getBBox();
+            console.log("DDN: width = ", bbox.width);
             var model = <joint.dia.Element> cellView.model;
             var diffX = x - this.lastMousePositionX;
             var diffY = y - this.lastMousePositionY;
-
-            console.log("DDN, lastX: ", this.lastMousePositionX,
-                "lastY:" , this.lastMousePositionY,
-                "x:", x,
-                "y:", y);
+            this.lastMousePositionX = x;
+            this.lastMousePositionY = y;
 
             var resize_direction = '';
-            if (this.isTopResizing)
-            {
-                resize_direction = 'top';
-                if (this.isLeftResizing)
-                {
-                    resize_direction = 'top-left';
-                    console.log("DDN resize direction: ", resize_direction);
-                    model.resize(bbox.width - diffX, bbox.height - diffY,  { direction: resize_direction });
-                    // model.resize(100, 100,  { direction: resize_direction });
-                    // model.resize(bbox.width - diffX, bbox.height - diffY);
-                    return;
-                } else if (this.isRightResizing)
-                {
-                    resize_direction = 'top-right';
-                    console.log("DDN resize direction: ", resize_direction,
-                        bbox.width + diffX,
-                        bbox.height - diffY);
-                    model.resize(bbox.width + diffX, bbox.height - diffY,  { direction: resize_direction });
-                    return;
-                }
-                console.log("DDN resize direction: ", resize_direction);
-                model.resize(bbox.width, bbox.height - diffY,  { direction: resize_direction });
-                // model.resize(bbox.width, bbox.height - diffY);
-                return;
-            } else if (this.isBottomResizing)
-            {
-                resize_direction = 'bottom';
-                if (this.isLeftResizing)
-                {
-                    resize_direction = 'bottom-left';
-                    console.log("DDN resize direction: ", resize_direction);
-                    model.resize(bbox.width - diffX, bbox.height + diffY,  { direction: resize_direction });
-                    // model.resize(bbox.width - diffX, bbox.height + diffY);
-                    return;
-                } else if (this.isRightResizing)
-                {
+            if (this.isBottomResizing) {
+                if (this.isRightResizing) {
                     resize_direction = 'bottom-right';
                     console.log("DDN resize direction: ", resize_direction);
-                    model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: resize_direction });
-                    // model.resize(bbox.width + diffX, bbox.height + diffY);
+                    // model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: 'bottom-right' });
+                    model.resize(bbox.width - 2 + diffX, bbox.height + diffY);
                     return;
                 }
+                resize_direction = 'bottom';
                 console.log("DDN resize direction: ", resize_direction);
-                model.resize(bbox.width, bbox.height + diffY,  { direction: resize_direction });
-                // model.resize(bbox.width, bbox.height + diffY);
-                return;
-            } else if (this.isLeftResizing)
-            {
-                resize_direction = 'left';
-                console.log("DDN resize direction: ", resize_direction);
-                model.resize(bbox.width - diffX, bbox.height,  { direction: resize_direction });
-                // model.resize(bbox.width - diffX, bbox.height);
-                return;
-            } else if (this.isRightResizing)
-            {
-                resize_direction = 'right';
-                console.log("DDN resize direction: ", resize_direction);
-                model.resize(bbox.width + diffX, bbox.height,  { direction: resize_direction });
-                // model.resize(bbox.width + diffX, bbox.height);
+                // model.resize(bbox.width, bbox.height + diffY,  { direction: 'bottom' });
+                model.resize(bbox.width - 2, bbox.height + diffY);
                 return;
             }
+            if (this.isRightResizing) {
+                resize_direction = 'right';
+                console.log("DDN resize direction: ", resize_direction);
+                // model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: 'bottom-right' });
+                model.resize(bbox.width - 2 + diffX, bbox.height);
+                return;
+            }
+            // if (this.isTopResizing)
+            // {
+            //     resize_direction = 'top';
+            //     if (this.isLeftResizing)
+            //     {
+            //         resize_direction = 'top-left';
+            //         console.log("DDN resize direction: ", resize_direction);
+            //         // model.resize(bbox.width - diffX, bbox.height - diffY,  { direction: 'top-left' });
+            //         model.resize(bbox.width - diffX, bbox.height - diffY);
+            //         return;
+            //     } else if (this.isRightResizing)
+            //     {
+            //         resize_direction = 'top-right';
+            //         console.log("DDN resize direction: ", resize_direction,
+            //             bbox.width + diffX,
+            //             bbox.height - diffY);
+            //         // model.resize(bbox.width + diffX, bbox.height - diffY,  { direction: 'top-right' });
+            //         model.resize(bbox.width + diffX, bbox.height - diffY);
+            //         return;
+            //     }
+            //     console.log("DDN resize direction: ", resize_direction);
+            //     // model.resize(bbox.width, bbox.height - diffY,  { direction: 'top' });
+            //     model.resize(bbox.width, bbox.height - diffY);
+            //     return;
+            // } else if (this.isBottomResizing)
+            // {
+            //     resize_direction = 'bottom';
+            //     if (this.isLeftResizing)
+            //     {
+            //         resize_direction = 'bottom-left';
+            //         console.log("DDN resize direction: ", resize_direction);
+            //         // model.resize(bbox.width - diffX, bbox.height + diffY,  { direction: 'bottom-left' });
+            //         model.resize(bbox.width - diffX, bbox.height + diffY);
+            //         return;
+            //     } else if (this.isRightResizing)
+            //     {
+            //         resize_direction = 'bottom-right';
+            //         console.log("DDN resize direction: ", resize_direction);
+            //         // model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: 'bottom-right' });
+            //         model.resize(bbox.width + diffX, bbox.height + diffY);
+            //         return;
+            //     }
+            //     console.log("DDN resize direction: ", resize_direction);
+            //     // model.resize(bbox.width, bbox.height + diffY,  { direction: 'bottom' });
+            //     model.resize(bbox.width, bbox.height + diffY);
+            //     return;
+            // } else if (this.isLeftResizing)
+            // {
+            //     resize_direction = 'left';
+            //     console.log("DDN resize direction: ", resize_direction);
+            //     // model.resize(bbox.width - diffX, bbox.height,  { direction: 'left' });
+            //     model.resize(bbox.width - diffX, bbox.height);
+            //     return;
+            // } else if (this.isRightResizing)
+            // {
+            //     resize_direction = 'right';
+            //     console.log("DDN resize direction: ", resize_direction);
+            //     // model.resize(bbox.width + diffX, bbox.height,  { direction: 'right' });
+            //     model.resize(bbox.width + diffX, bbox.height);
+            //     return;
+            // }
             // cellView.model.resize(bbox.width + diffX, bbox.height + diffY);
 
         }
