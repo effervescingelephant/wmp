@@ -67,37 +67,39 @@ class DefaultDiagramNode implements DiagramNode {
         // var cellView = this.jointObject.diagramElementView;
         cellView.options.interactive = true;
 
+        var bbox = cellView.getBBox();
+        var new_x = bbox.x + (<number> (bbox.width - 50)/2);
+        var new_y = bbox.y + bbox.height - 50;
+        console.log("initPropertyEditElements resize: x = ", new_x, ", y = ", new_y);
+        this.propertyEditElement.setPosition(new_x, new_y);
+
         // if (this.isTopResizing || this.isBottomResizing || this.isRightResizing || this.isLeftResizing)
         if (this.isBottomResizing || this.isRightResizing)
         {
-            // console.log("DDN resize move: ",  this.isTopResizing, this.isBottomResizing, this.isRightResizing, this.isLeftResizing);
             cellView.options.interactive = false;
-            var bbox = cellView.getBBox();
-            console.log("DDN: width = ", bbox.width);
             var model = <joint.dia.Element> cellView.model;
             var diffX = x - this.lastMousePositionX;
             var diffY = y - this.lastMousePositionY;
             this.lastMousePositionX = x;
             this.lastMousePositionY = y;
 
+
+
             var resize_direction = '';
             if (this.isBottomResizing) {
                 if (this.isRightResizing) {
                     resize_direction = 'bottom-right';
-                    console.log("DDN resize direction: ", resize_direction);
                     // model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: 'bottom-right' });
                     model.resize(bbox.width - 2 + diffX, bbox.height + diffY);
                     return;
                 }
                 resize_direction = 'bottom';
-                console.log("DDN resize direction: ", resize_direction);
                 // model.resize(bbox.width, bbox.height + diffY,  { direction: 'bottom' });
                 model.resize(bbox.width - 2, bbox.height + diffY);
                 return;
             }
             if (this.isRightResizing) {
                 resize_direction = 'right';
-                console.log("DDN resize direction: ", resize_direction);
                 // model.resize(bbox.width + diffX, bbox.height + diffY,  { direction: 'bottom-right' });
                 model.resize(bbox.width - 2 + diffX, bbox.height);
                 return;
@@ -176,10 +178,10 @@ class DefaultDiagramNode implements DiagramNode {
         this.propertyEditElement = new PropertyEditElement(this.logicalId, this.jointObject.id,
             this.changeableProperties);
         this.propertyEditElement.setPosition(parentPosition.x, parentPosition.y);
-        this.jointObject.on('change:position', () => {
-            var position = this.getJointObjectPagePosition(zoom);
-            this.propertyEditElement.setPosition(position.x, position.y);
-        });
+        // this.jointObject.on('change:position', () => {
+        //     var position = this.getJointObjectPagePosition(zoom);
+        //     this.propertyEditElement.setPosition(position.x, position.y);
+        // });
     }
 
     getPropertyEditElement(): PropertyEditElement {
