@@ -277,9 +277,7 @@ class SceneController {
         } else if (event.button == MouseButton.left){
             var node: DiagramNode = this.scene.getNodeById(cellView.model.id);
             if (node) {
-                // var command: Command = this.paperCommandFactory.makeMoveCommand(node, this.lastCellMouseDownPosition.x,
-                //     this.lastCellMouseDownPosition.y, node.getX(), node.getY(), this.scene.getZoom());
-                // this.undoRedoController.addCommand(command);
+
                 console.log("SC: pointer up");
                 node.clearResizingFlags();
                 cellView.unhighlight(cellView.model.id);
@@ -289,11 +287,9 @@ class SceneController {
 
     private cellPointermoveListener(cellView, event, x, y): void {
         this.clickFlag = false;
-        // if (event.button == MouseButton.left) {
         var node: DiagramNode = this.scene.getNodeById(cellView.model.id);
         if (node) {
             node.pointermove(cellView, event, x, y);
-            // }
         }
     }
 
