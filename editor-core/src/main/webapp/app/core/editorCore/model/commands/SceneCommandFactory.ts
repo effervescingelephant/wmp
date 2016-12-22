@@ -36,4 +36,10 @@ class SceneCommandFactory {
         return new MoveCommand(oldX, oldY, newX, newY, zoom, node.setPosition.bind(node));
     }
 
+    public makeResizeCommand(node: DiagramNode, oldX: number, oldY: number, newX: number, newY: number,
+                           zoom: number): Command {
+        return new MoveCommand(oldX, oldY, newX, newY, zoom, node.setPosition.bind(node));
+    }
+
+
 }
