@@ -18,6 +18,7 @@ class SceneController {
     private rightClickFlag : boolean;
     private undoRedoController: UndoRedoController;
     private lastCellMouseDownPosition: {x: number, y: number};
+    private lastCellBBoxSizes: {width: number, height: number};
     private paperCommandFactory: SceneCommandFactory;
     private contextMenuId = "scene-context-menu";
 
@@ -29,6 +30,7 @@ class SceneController {
         this.clickFlag = false;
         this.rightClickFlag = false;
         this.lastCellMouseDownPosition = { x: 0, y: 0 };
+        this.lastCellBBoxSizes = {width : 0, height : 0};
 
         this.scene.on('cell:pointerdown', (cellView, event, x, y): void => {
             this.cellPointerdownListener(cellView, event, x, y);
@@ -258,8 +260,9 @@ class SceneController {
             this.lastCellMouseDownPosition.x = node.getX();
             this.lastCellMouseDownPosition.y = node.getY();
             cellView.highlight(cellView.model.id);
-            console.log("SC: pointer down");
             node.setResizingFields(cellView.getBBox(), x, y, 20);
+            this.lastCellBBoxSizes.width = node.getX() + cellView.getBBox().width;
+            this.lastCellBBoxSizes.height = node.getY() + cellView.getBBox().height;
         }
         if (event.button == MouseButton.right) {
             this.rightClickFlag = true;
@@ -279,6 +282,28 @@ class SceneController {
             if (node) {
 
                 console.log("SC: pointer up");
+                if (node.isResizing()) {
+                    var command = this.paperCommandFactory.makeResizeCommand(
+                        node,
+                        cellView,
+                        this.lastCellBBoxSizes.width,
+                        this.lastCellBBoxSizes.height,
+                        x,
+                        y,
+                        node.getResizeDirection(),
+                        1);
+                    this.undoRedoController.addCommand(command);
+                } else {
+                    var command = this.paperCommandFactory.makeMoveCommand(
+                        node,
+                        cellView,
+                        this.lastCellMouseDownPosition.x,
+                        this.lastCellMouseDownPosition.y,
+                        x,
+                        y,
+                        1);
+                    this.undoRedoController.addCommand(command);
+                }
                 node.clearResizingFlags();
                 cellView.unhighlight(cellView.model.id);
             }

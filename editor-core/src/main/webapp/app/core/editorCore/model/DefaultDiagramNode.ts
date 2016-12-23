@@ -67,44 +67,35 @@ class DefaultDiagramNode implements DiagramNode {
 
         cellView.options.interactive = true;
 
-        var bbox = cellView.getBBox();
-        var new_x = bbox.x + (<number> (bbox.width - 50)/2);
-        var new_y = bbox.y + bbox.height - 50;
-        console.log("initPropertyEditElements resize: x = ", new_x, ", y = ", new_y);
-        this.propertyEditElement.setPosition(new_x, new_y);
-
-        if (this.isBottomResizing || this.isRightResizing)
+        if (this.isResizing())
         {
             cellView.options.interactive = false;
-            var model = <joint.dia.Element> cellView.model;
-            var diffX = x - this.lastMousePositionX;
-            var diffY = y - this.lastMousePositionY;
-            this.lastMousePositionX = x;
-            this.lastMousePositionY = y;
-
-
-
-            var resize_direction = '';
-            if (this.isBottomResizing) {
-                if (this.isRightResizing) {
-                    resize_direction = 'bottom-right';
-                    model.resize(bbox.width - 2 + diffX, bbox.height + diffY);
-                    return;
-                }
-                resize_direction = 'bottom';
-                model.resize(bbox.width - 2, bbox.height + diffY);
-                return;
-            }
-            if (this.isRightResizing) {
-                resize_direction = 'right';
-                model.resize(bbox.width - 2 + diffX, bbox.height);
-                return;
-            }
+            this.setSize(cellView, x, y, this.getResizeDirection());
         }
-
-
+        else {
+            var bbox = cellView.getBBox();
+            var new_x = bbox.x + (<number> (bbox.width - 50)/2);
+            var new_y = bbox.y + bbox.height - 50;
+            this.propertyEditElement.setPosition(new_x, new_y);
+        }
     };
 
+    isResizing(): boolean {
+        return this.isBottomResizing || this.isRightResizing;
+    }
+    getResizeDirection(): string {
+        var resize_direction = '';
+        if (this.isBottomResizing) {
+            if (this.isRightResizing) {
+                resize_direction = 'bottom-right';
+            } else {
+                resize_direction = 'bottom';
+            }
+        } else if (this.isRightResizing) {
+            resize_direction = 'right';
+        }
+        return resize_direction;
+    }
 
     initPropertyEditElements(zoom: number): void {
         var parentPosition = this.getJointObjectPagePosition(zoom);
@@ -137,10 +128,57 @@ class DefaultDiagramNode implements DiagramNode {
         return (this.jointObject.get("position"))['y'];
     }
 
-    setPosition(x: number, y: number, zoom: number): void {
+    setPosition(cellView, x: number, y: number, zoom: number): void {
+        var bbox = cellView.getBBox();
         this.jointObject.position(x, y);
-        var position = this.getJointObjectPagePosition(zoom);
-        this.propertyEditElement.setPosition(position.x, position.y);
+
+        bbox = cellView.getBBox();
+        var new_x = bbox.x + (<number> (bbox.width - 50)/2);
+        var new_y = bbox.y + bbox.height - 50;
+        this.propertyEditElement.setPosition(new_x, new_y);
+    }
+
+    setSize(cellView, x: number, y: number, direction: string): void {
+        var bbox = cellView.getBBox();
+        var model = <joint.dia.Element> cellView.model;
+        var diffX = x - this.lastMousePositionX;
+        var diffY = y - this.lastMousePositionY;
+        this.lastMousePositionX = x;
+        this.lastMousePositionY = y;
+        console.log('width pre: ', bbox.width);
+        if (direction == 'bottom-right') {
+            model.resize(bbox.width - 2 + diffX, bbox.height + diffY);
+        } else if (direction == 'bottom') {
+            model.resize(bbox.width - 2, bbox.height + diffY);
+        } else if (direction == 'right') {
+            model.resize(bbox.width - 2 + diffX, bbox.height);
+        }
+        bbox = cellView.getBBox();
+        var new_x = bbox.x + (<number> (bbox.width - 50)/2);
+        var new_y = bbox.y + bbox.height - 50;
+        this.propertyEditElement.setPosition(new_x, new_y);
+        console.log('width post: ', bbox.width);
+    }
+    setSizeCommand(cellView, x: number, y: number, lastX: number, lastY: number, direction: string): void {
+        var bbox = cellView.getBBox();
+        var model = <joint.dia.Element> cellView.model;
+        var diffX = x - lastX;
+        var diffY = y - lastY;
+        this.lastMousePositionX = x;
+        this.lastMousePositionY = y;
+        // console.log('width pre: ', bbox.width);
+        if (direction == 'bottom-right') {
+            model.resize(bbox.width - 4  + diffX, bbox.height + diffY);
+        } else if (direction == 'bottom') {
+            model.resize(bbox.width - 4, bbox.height + diffY);
+        } else if (direction == 'right') {
+            model.resize(bbox.width - 4 + diffX, bbox.height);
+        }
+        bbox = cellView.getBBox();
+        var new_x = bbox.x + (<number> (bbox.width - 50)/2);
+        var new_y = bbox.y + bbox.height - 50;
+        // console.log('width post: ', bbox.width);
+        this.propertyEditElement.setPosition(new_x, new_y);
     }
 
     getImagePath(): string {

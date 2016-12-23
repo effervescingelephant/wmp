@@ -31,14 +31,14 @@ class SceneCommandFactory {
             this.sceneController.addLink.bind(this.sceneController));
     }
 
-    public makeMoveCommand(node: DiagramNode, oldX: number, oldY: number, newX: number, newY: number,
+    public makeMoveCommand(node: DiagramNode, cellView, oldX: number, oldY: number, newX: number, newY: number,
                            zoom: number): Command {
-        return new MoveCommand(oldX, oldY, newX, newY, zoom, node.setPosition.bind(node));
+        return new MoveCommand(cellView, oldX, oldY, newX, newY, zoom, node.setPosition.bind(node));
     }
 
-    public makeResizeCommand(node: DiagramNode, oldX: number, oldY: number, newX: number, newY: number,
-                           zoom: number): Command {
-        return new ResizeCommand(oldX, oldY, newX, newY, zoom, node.setPosition.bind(node));
+    public makeResizeCommand(node: DiagramNode, cellView, oldX: number, oldY: number, newX: number,
+                             newY: number, direction: string, zoom: number): Command {
+        return new ResizeCommand(cellView, oldX, oldY, newX, newY, direction, zoom, node.setSizeCommand.bind(node));
     }
 
 
